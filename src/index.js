@@ -1,5 +1,5 @@
 import modal from './modules/modal'
-import modulTwo from './modules/two'
+import slider from './modules/slider'
 console.log('index.js');
 modal();
-modulTwo();
+slider();
