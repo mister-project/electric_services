@@ -1,5 +1,5 @@
-import modulOne from './modules/one'
+import modal from './modules/modal'
 import modulTwo from './modules/two'
 console.log('index.js');
-modulOne();
+modal();
 modulTwo();
