@@ -6,6 +6,8 @@ const modal = () => {
     const button = document.querySelector('.callback-btn')
     const overlay = document.querySelector('.modal-overlay')
     const body = document.querySelector('body')
+    const modalClose = body.querySelector('.modal-close')
+    console.log(modalClose)
 
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.callback-btn')) return;
@@ -22,16 +24,16 @@ const modal = () => {
         overlay.style.display = 'none'
     })
     //Закрываем модальное окно и тень при нажатии на крестик в самом окне
-    modal.addEventListener('click', (e) => {
+    modalClose.addEventListener('click', (e) => {
 
-        if (!e.target.classList.contains('modal-close')) {
+        
             modal.style.display = 'none'
             overlay.style.display = 'none'
 
-        }
+        
     })
 
 }
 
 
-export default modal
+export default modal()
