@@ -1,13 +1,16 @@
 //Модуль для вызова и закрытия модального окна
 const modal = () => {
-    console.log('modal')
-    const modal = document.querySelector('.modal-callback')
 
-    const button = document.querySelector('.callback-btn')
+    //Получаем модальное окно целиком 
+    const modal = document.querySelector('.modal-callback')
+    
+    //Получаем кнопку закрытия внутри модального окна
+    const modalClose = modal.querySelector('.modal-close')
+    
+    //Получаем тень целиком (overlay)
     const overlay = document.querySelector('.modal-overlay')
-    const body = document.querySelector('body')
-    const modalClose = body.querySelector('.modal-close')
-    console.log(modalClose)
+    
+    //слушаем события во всем документе и через дилегирование отлавливаем  нажатие кнопки с классом 'callback-btn'  
 
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.callback-btn')) return;
@@ -17,20 +20,18 @@ const modal = () => {
     })
 
     //Закрываем модальное окно и тень при нажатии на тень
-    body.addEventListener('click', (e) => {
-        if (!e.target.closest('.modal-overlay')) return;
-
+    overlay.addEventListener('click', () => {
+      
         modal.style.display = 'none'
         overlay.style.display = 'none'
     })
+
     //Закрываем модальное окно и тень при нажатии на крестик в самом окне
-    modalClose.addEventListener('click', (e) => {
+    modalClose.addEventListener('click', () => {
 
-        
-            modal.style.display = 'none'
-            overlay.style.display = 'none'
 
-        
+        modal.style.display = 'none'
+        overlay.style.display = 'none'
     })
 
 }

@@ -1,14 +1,10 @@
 const slider = () => {
 
-    console.log('slider');
     const slider = document.querySelector('.top-slider')
 
     const slides = slider.querySelectorAll('.item')
-    console.log(slides);
-    // slides.forEach(elem => {
-    //     elem.style.display = "none"
-
-    // })
+   
+    
     //Переменная для выбора соответствующего слайда
     let currentSlide = 0
 
