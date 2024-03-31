@@ -1,31 +1,28 @@
 const accordion = () => {
-    console.log('accordion')
-    //Получение разметки под аккордеон
+
+    //Получение всего блока аккордеона
     const accorddBlock = document.querySelector('.accordeon')
-    console.log(accorddBlock)
     //Получение элементов аккордеона
     const accordElements = accorddBlock.querySelectorAll('.element')
 
+    //Запуск закрытия всех пунктов по клику внутри аккордеона
 
+    accorddBlock.addEventListener('click', (e) => {
+        accordElements.forEach((elem, index) => {
+            elem.className = 'element'
+            elem.querySelector('.element-content').style.display = 'none'
+        })
+        //Так же через слушатель перебираем элементы аккордеона и сопоставляем с тем, по которому был клик и меняем класс у заголовка и свойство видимости у контента
+        accordElements.forEach((elem, index) => {
+            if (e.target == elem.querySelector('.title')) {
 
-
-    //перебор элементов + окрытие абзацев при срабатывании слушателя по клику
-    accordElements.forEach((elem, index) => {
-        const elemContent = elem.querySelector('.element-content')
-        console.log(elemContent)
-
-        elem.addEventListener('click', (e) => {
-
-            if (elem.className === 'element active' && elemContent.style.display === 'block') {
-                elem.className = 'element'
-                elemContent.style.display = 'none'
-            } else {
                 elem.className = 'element active'
-                elemContent.style.display = 'block'
+                elem.querySelector('.element-content').style.display = 'block'
             }
         })
 
     })
+
 }
 
 export default accordion
