@@ -3,8 +3,8 @@ const slider = () => {
     const slider = document.querySelector('.top-slider')
 
     const slides = slider.querySelectorAll('.item')
-   
-    
+
+
     //Переменная для выбора соответствующего слайда
     let currentSlide = 0
 
@@ -14,7 +14,7 @@ const slider = () => {
         slides[currentSlide].style.display = "none";
         currentSlide++
 
-        if(currentSlide >= slides.length) {
+        if (currentSlide >= slides.length) {
             currentSlide = 0
         }
 
@@ -22,12 +22,12 @@ const slider = () => {
     }
 
 
-const startSlide = () => {
-    setInterval(autoSlide, 3000)
+    const startSlide = () => {
+        setInterval(autoSlide, 3000)
 
+    }
+
+
+    startSlide()
 }
-
-
-startSlide()
-}
-export default slider()
+export default slider
