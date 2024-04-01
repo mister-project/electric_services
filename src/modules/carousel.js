@@ -7,12 +7,14 @@ export const carousel = () => {
 
 
     const splide = new Splide('.services-splide', {
+        type: 'loop', //задаем циркуляцию слайдов
         //Ниже - классические настройки самого Splider'a
         pagination: false, //убираем точки внизу слайдов
 
         arrows: false, //отключаем кнопки самого Splider'a
         //Настройки количества слайдов для разных экранов, начиная с Десктопа
         perPage: 3,
+
         breakpoints: {
             768: {
                 perPage: 2,
