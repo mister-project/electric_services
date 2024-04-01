@@ -10,10 +10,13 @@ const modal = () => {
     //Получаем тень целиком (overlay)
     const overlay = document.querySelector('.modal-overlay')
 
-    //слушаем события во всем документе и через дилегирование отлавливаем  нажатие кнопки с классом 'callback-btn'  
+    const fancyboxModal = document.querySelectorAll('.fancyboxModal')
+    console.log(fancyboxModal)
+
+    //слушаем события во всем документе и через дилегирование отлавливаем  нажатие любой из кнопок с классом 'fancyboxModal'  
 
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('.callback-btn')) return;
+        if (!e.target.closest('.fancyboxModal')) return;
 
         modal.style.display = 'block'
         overlay.style.display = 'block'
