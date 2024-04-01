@@ -1,20 +1,41 @@
 const buttonUp = () => {
-
+    //Находим кнопку .UP
     const btnUp = document.querySelector('.up')
-    console.log(btnUp)
+    //Находим блок улуги
+    const services = document.getElementById('services')
 
-    btnUp.addEventListener('click', () => {
-        goTop()
-    })
+
+    //Задаем изначально кнопку .UP невидимой
+    btnUp.style.display = 'none'
+
+
+    //фиксируем изменение скролла
+    window.addEventListener('scroll', (e) => {
+        //Сравниваем позицию блока с текущей прокруткой и делаем видимой кнопку UP
+        const delta = document.documentElement.scrollTop - services.getBoundingClientRect().top
+        if (delta > 0) {
+            btnUp.style.display = 'block'
+        } else {
+            btnUp.style.display = 'none'
+        }
+
+    });
 
     const goTop = () => {
         console.log('ура')
         if (window.pageYOffset > 0) {
+            // console.log(window.pageYOffset)
             window.scrollBy(0, -10); //вторая цифра определяет скорость скрола
             setTimeout(goTop, 0)
         }
 
     }
+
+    //Фиксация клика по кнопке и запуск скрола вверх
+    btnUp.addEventListener('click', () => {
+        goTop()
+    })
+
 
 }
 
