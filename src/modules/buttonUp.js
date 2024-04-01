@@ -10,7 +10,7 @@ const buttonUp = () => {
     const goTop = () => {
         console.log('ура')
         if (window.pageYOffset > 0) {
-            window.scrollBy(0, -10);
+            window.scrollBy(0, -10); //вторая цифра определяет скорость скрола
             setTimeout(goTop, 0)
         }
 
