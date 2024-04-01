@@ -1,5 +1,7 @@
 const buttonUp = () => {
-    console.log('buttonUp')
+
+    const btnUp = document.querySelector('.up')
+    console.log(btnUp)
 
 }
 
