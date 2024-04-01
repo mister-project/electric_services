@@ -1,5 +1,6 @@
 import modal from './modules/modal'
 import slider from './modules/slider'
+import buttonUp from './modules/buttonUp'
 import {
     carousel
 } from './modules/carousel'
@@ -9,3 +10,4 @@ modal();
 slider();
 carousel();
 accordion();
+buttonUp();
