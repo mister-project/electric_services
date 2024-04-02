@@ -3,9 +3,6 @@ const sendForm = () => {
     console.log('send')
     const form = document.querySelector('[name="form-callback"]')
     console.log(form)
-    // form-callback
-
-
 
 
     //блок извещения об отправке данных
@@ -14,22 +11,21 @@ const sendForm = () => {
     const errorText = 'Ошибка...'
     const successText = 'Спасибо! Наш менеджер с Вами свяжется'
 
-    // //Функция для валидации полей
-    // const validate = (list) => {
-    //     let success = true
+    //Функция для валидации полей
+    const validate = (list) => {
+
+        let success = true
 
 
+        // list.forEach(input => {
+        //     if (!input.classList.contains('success')) {
+        //         success = false
+        //     }
 
+        // })
 
-    //     // list.forEach(input => {
-    //     //     if (!input.classList.contains('success')) {
-    //     //         success = false
-    //     //     }
-
-    //     // })
-
-    //     return success
-    // }
+        return success
+    }
 
     const sendData = (data) => {
         return fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -41,24 +37,7 @@ const sendForm = () => {
             }
         }).then(res => res.json())
     }
-    // //функция обработки данных, организации и отслеживания отправки формы
-    // const submitForm = () => {
 
-    //     //Получаем NodeList из полей ***для валидации***
-    //     const formElements = form.querySelectorAll('input');
-
-
-
-
-
-
-    //     //Вторая часть оповещения об отправке данных
-    //     statusBlock.textContent = loadText
-    //     form.append(statusBlock)
-    //     if (formId === 'form3') {
-    //         statusBlock.setAttribute('style', 'color: #FFFFFF;')
-
-    //     }
 
 
 
@@ -71,39 +50,10 @@ const sendForm = () => {
 
 
     //     // })
-    //     //вывод и отправка значения "Калькулятора"
-    //     someElem.forEach(elem => {
-    //         const element = document.getElementById(elem.id)
 
-
-    //         if (elem.type === 'block') {
-    //             formBody[elem.id] = element.textContent
-    //         } else if (elem.type === 'input') {
-    //             formBody[elem.id] = element.value
-    //         }
-
-    //     })
     //     console.log('submit');
-    //     //отправка данных формы, если поля прошли валидацию
-    //     if (validate(formElements)) {
-    //         sendData(formBody)
-    //             .then(data => {
-    //                 //Вставка сообщения об успешной отправке
-    //                 statusBlock.textContent = successText
 
-    //                 formElements.forEach(input => {
 
-    //                     input.value = '' //очищаем поля после отправки данных
-    //                 })
-    //             })
-    //             .catch(error => {
-    //                 //Вывод сообщения об ошибке отправки (под формой)
-    //                 statusBlock.textContent = errorText
-    //             })
-    //     } else {
-    //         alert('Данные не валидны!!!')
-    //     }
-    // }
 
 
     // try {
@@ -120,7 +70,23 @@ const sendForm = () => {
         //получаем сразу все поля из формы
         const formData = new FormData(form)
         const formBody = {} //сюда будем собирать инфу из формы 
-        console.log(formData)
+        //Получаем NodeList из полей ***для валидации***
+        const formElements = form.querySelectorAll('.form-control');
+
+        //функция обработки данных, организации и отслеживания отправки формы
+        // const submitForm = () => {
+
+        //Оповещения об отправке данных
+        statusBlock.textContent = loadText
+        form.append(statusBlock)
+
+        // statusBlock.setAttribute('style', 'color: #FFFFFF;')
+
+
+
+
+
+
 
         //перебираем и формируем заново получившиеся поля из формы
         formData.forEach((val, key) => {
@@ -130,17 +96,43 @@ const sendForm = () => {
         })
 
         console.log('submit');
-        sendData(formBody).then(data => {
-            console.log(data)
-        })
+        console.log(validate(formElements));
+
+
 
         //вызов функции организации отправки
         // submitForm()
+
+
+        // } catch (error) {
+        //     console.log('catch')
+        //     console.log(error.message)
+        // }
+
+        //отправка данных формы, если поля прошли валидацию
+        if (validate(formElements)) {
+            sendData(formBody)
+                .then(data => {
+                    console.log(data);
+
+                    //Вставка сообщения об успешной отправке
+                    // statusBlock.textContent = successText
+
+                    formElements.forEach(input => {
+                        console.log(typeof (input.value))
+
+
+                        input.value = '' //очищаем поля после отправки данных
+                    })
+                    // })
+                    // .catch(error => {
+                    //     //Вывод сообщения об ошибке отправки (под формой)
+                    //     statusBlock.textContent = errorText
+                })
+        } else {
+            alert('Данные не валидны!!!')
+        }
     })
-    // } catch (error) {
-    //     console.log('catch')
-    //     console.log(error.message)
-    // }
 
 }
 export default sendForm
