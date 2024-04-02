@@ -56,12 +56,6 @@ const sendForm = () => {
 
 
 
-    // try {
-
-    //     //Еще одна првыаываывоверка (+защита от слома кода при неверном идентификаторе формы или изменении верстки)
-    //     if (!form) {
-    //         throw new Error('Верните форму на место, пожалуйста)')
-    //     }
 
     form.addEventListener('submit', (e) => {
 
@@ -81,12 +75,6 @@ const sendForm = () => {
         form.append(statusBlock)
 
         // statusBlock.setAttribute('style', 'color: #FFFFFF;')
-
-
-
-
-
-
 
         //перебираем и формируем заново получившиеся поля из формы
         formData.forEach((val, key) => {
@@ -113,21 +101,21 @@ const sendForm = () => {
         if (validate(formElements)) {
             sendData(formBody)
                 .then(data => {
+
                     console.log(data);
 
-                    //Вставка сообщения об успешной отправке
-                    // statusBlock.textContent = successText
+                    // Вставка сообщения об успешной отправке
+                    statusBlock.textContent = successText
 
                     formElements.forEach(input => {
-                        console.log(typeof (input.value))
 
 
                         input.value = '' //очищаем поля после отправки данных
                     })
-                    // })
-                    // .catch(error => {
-                    //     //Вывод сообщения об ошибке отправки (под формой)
-                    //     statusBlock.textContent = errorText
+                })
+                .catch(error => {
+                    //Вывод сообщения об ошибке отправки (под формой)
+                    statusBlock.textContent = errorText
                 })
         } else {
             alert('Данные не валидны!!!')
