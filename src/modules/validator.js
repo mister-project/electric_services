@@ -38,7 +38,15 @@ const validator = () => {
     // });
 
 
-    // //валидация телефона 
+
+    //валидация телефона (только цифры и + (знак плюс))
+    const tel = document.querySelector('[name="tel"]')
+
+    tel.addEventListener('input', (e) => {
+
+        e.target.value = e.target.value.replace(/[^0-9\(\)\+]/g, "");
+    })
+
     // const tel = document.querySelectorAll('input[type="tel"]')
 
     // tel.forEach(elem => {
