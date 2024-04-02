@@ -6,10 +6,13 @@ import {
 } from './modules/carousel'
 import accordion from './modules/accordion'
 import validator from './modules/validator'
+import sendForm from './modules/sendForm'
+
 
 modal();
 slider();
 carousel();
 accordion();
 buttonUp();
-validator()
+validator();
+sendForm();
