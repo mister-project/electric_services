@@ -1,5 +1,4 @@
 const validator = () => {
-    console.log('validator');
 
     //Только КИРИЛИЦА -Валидация поля имени в форме вначале, внизу и модальном окне 
     const userName = document.querySelector('[name="fio"]');

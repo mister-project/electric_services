@@ -1,8 +1,6 @@
 const sendForm = () => {
 
-    console.log('send')
     const form = document.querySelector('[name="form-callback"]')
-    console.log(form)
 
 
     //блок извещения об отправке данных
@@ -22,6 +20,7 @@ const sendForm = () => {
     const sendData = (data) => {
         return fetch('https://jsonplaceholder.typicode.com/posts', {
             // jsonplaceholder. server.php
+            //phpmailer - плагин отправки
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -33,7 +32,7 @@ const sendForm = () => {
 
     //функция (основная) обработки данных, организации и отслеживания отправки формы
     const submitForm = () => {
-        console.log('ура')
+
         //получаем сразу все поля из формы
         const formData = new FormData(form)
         const formBody = {} //сюда будем собирать инфу из формы 
@@ -49,19 +48,15 @@ const sendForm = () => {
         //перебираем и формируем заново получившиеся поля из формы
         formData.forEach((val, key) => {
             formBody[key] = val
-            console.log(formBody)
 
         })
 
-        console.log('submit');
-        console.log(validate(formElements));
 
         //отправка данных формы, если поля прошли валидацию
         if (validate(formElements)) {
             sendData(formBody)
                 .then(data => {
 
-                    console.log(data);
 
                     // Вставка сообщения об успешной отправке
                     statusBlock.textContent = successText
@@ -94,7 +89,7 @@ const sendForm = () => {
         })
     } catch (error) {
 
-        console.log(error.message)
+        // console.log(error.message)
     }
 }
 export default sendForm
