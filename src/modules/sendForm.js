@@ -48,10 +48,9 @@ const sendForm = () => {
     //     const formElements = form.querySelectorAll('input');
 
 
-    //получаем сразу все поля из формы
-    const formData = new FormData(form)
 
-    const formBody = {} //сюда будем собирать инфу из формы и калькулятора
+
+
 
     //     //Вторая часть оповещения об отправке данных
     //     statusBlock.textContent = loadText
@@ -61,12 +60,7 @@ const sendForm = () => {
 
     //     }
 
-    //перебираем и формируем заново получившиеся поля из формы
-    // formData.forEach((val, key) => {
-    //     formBody[key] = val
-    // console.log(formBody)
 
-    // })
 
     //     // form.forEach((el) => {
     //     // tel = form.querySelector('input[type="tel"]')
@@ -121,9 +115,22 @@ const sendForm = () => {
 
     form.addEventListener('submit', (e) => {
 
-        e.preventDefault() //отменяем действие браузера по умолчанию при нажатии на кнопку       
+        e.preventDefault() //отменяем действие браузера по умолчанию при нажатии на кнопку  
+
+        //получаем сразу все поля из формы
+        const formData = new FormData(form)
+        const formBody = {} //сюда будем собирать инфу из формы 
+        console.log(formData)
+
+        //перебираем и формируем заново получившиеся поля из формы
+        formData.forEach((val, key) => {
+            formBody[key] = val
+            console.log(formBody)
+
+        })
+
         console.log('submit');
-        sendData({}).then(data => {
+        sendData(formBody).then(data => {
             console.log(data)
         })
 
