@@ -5,9 +5,11 @@ import {
     carousel
 } from './modules/carousel'
 import accordion from './modules/accordion'
+import validator from './modules/validator'
 
 modal();
 slider();
 carousel();
 accordion();
 buttonUp();
+validator()
