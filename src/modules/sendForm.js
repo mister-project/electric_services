@@ -16,14 +16,6 @@ const sendForm = () => {
 
         let success = true
 
-
-        // list.forEach(input => {
-        //     if (!input.classList.contains('success')) {
-        //         success = false
-        //     }
-
-        // })
-
         return success
     }
 
@@ -39,42 +31,20 @@ const sendForm = () => {
     }
 
 
-
-
-    //     // form.forEach((el) => {
-    //     // tel = form.querySelector('input[type="tel"]')
-    //     // btn = form.querySelector('button[type="submit"]')
-    //     // console.log(tel)
-    //     // console.log(btn)
-
-
-
-    //     // })
-
-    //     console.log('submit');
-
-
-
-
-
-    form.addEventListener('submit', (e) => {
-
-        e.preventDefault() //отменяем действие браузера по умолчанию при нажатии на кнопку  
-
+    //функция (основная) обработки данных, организации и отслеживания отправки формы
+    const submitForm = () => {
+        console.log('ура')
         //получаем сразу все поля из формы
         const formData = new FormData(form)
         const formBody = {} //сюда будем собирать инфу из формы 
         //Получаем NodeList из полей ***для валидации***
         const formElements = form.querySelectorAll('.form-control');
 
-        //функция обработки данных, организации и отслеживания отправки формы
-        // const submitForm = () => {
 
         //Оповещения об отправке данных
         statusBlock.textContent = loadText
         form.append(statusBlock)
 
-        // statusBlock.setAttribute('style', 'color: #FFFFFF;')
 
         //перебираем и формируем заново получившиеся поля из формы
         formData.forEach((val, key) => {
@@ -85,17 +55,6 @@ const sendForm = () => {
 
         console.log('submit');
         console.log(validate(formElements));
-
-
-
-        //вызов функции организации отправки
-        // submitForm()
-
-
-        // } catch (error) {
-        //     console.log('catch')
-        //     console.log(error.message)
-        // }
 
         //отправка данных формы, если поля прошли валидацию
         if (validate(formElements)) {
@@ -120,7 +79,22 @@ const sendForm = () => {
         } else {
             alert('Данные не валидны!!!')
         }
-    })
+    }
+    try {
+        if (!form) {
+            throw new Error('Пожаaaлуйста, верните форму на место')
+        }
 
+
+        form.addEventListener('submit', (e) => {
+
+            e.preventDefault() //отменяем действие браузера по умолчанию при нажатии на кнопку  
+
+            submitForm()
+        })
+    } catch (error) {
+
+        console.log(error.message)
+    }
 }
 export default sendForm
