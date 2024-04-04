@@ -8,7 +8,10 @@ const sendForm = () => {
     const loadText = 'Загрузка...'
     const errorText = 'Ошибка...'
     const successText = 'Спасибо! Наш менеджер с Вами свяжется'
-
+    //Получаем модальное окно целиком 
+    const modal = document.querySelector('.modal-callback')
+    //Получаем подложку модального окна целиком (overlay)
+    const overlay = document.querySelector('.modal-overlay')
     //Функция для валидации полей
     const validate = (list) => {
 
@@ -19,14 +22,29 @@ const sendForm = () => {
 
     const sendData = (data) => {
         return fetch('https://jsonplaceholder.typicode.com/posts', {
-            // jsonplaceholder. server.php
-            //phpmailer - плагин отправки
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(res => res.json())
+                // jsonplaceholder. server.php
+                //phpmailer - плагин отправки
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => res.json())
+            //Закрытие модального окна через 5 секунд после отправки
+            .then(() => {
+
+                setTimeout(() => {
+                    modal.style.display = 'none'
+                    overlay.style.display = 'none'
+                }, 5000);
+
+            })
+
+
+
+
+
     }
 
 
@@ -61,11 +79,13 @@ const sendForm = () => {
                     // Вставка сообщения об успешной отправке
                     statusBlock.textContent = successText
 
+
                     formElements.forEach(input => {
 
 
                         input.value = '' //очищаем поля после отправки данных
                     })
+
                 })
                 .catch(error => {
                     //Вывод сообщения об ошибке отправки (под формой)
