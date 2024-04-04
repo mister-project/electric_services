@@ -5,19 +5,19 @@ const accordion = () => {
     //Получение элементов аккордеона
     const accordElements = accorddBlock.querySelectorAll('.element')
 
-    //Запуск закрытия всех пунктов по клику внутри аккордеона
-
+    //Открытие выбранного пункта по клику и закрытие остальных
     accorddBlock.addEventListener('click', (e) => {
-        accordElements.forEach((elem, index) => {
-            elem.className = 'element'
-            elem.querySelector('.element-content').style.display = 'none'
-        })
-        //Так же через слушатель перебираем элементы аккордеона и сопоставляем с тем, по которому был клик и меняем класс у заголовка и свойство видимости у контента
-        accordElements.forEach((elem, index) => {
+
+        //перебираем элементы аккордеона и сопоставляем с тем, по которому был клик -> меняем класс у заголовка и свойство видимости у блока контента
+        accordElements.forEach((elem) => {
             if (e.target == elem.querySelector('.title')) {
 
                 elem.className = 'element active'
                 elem.querySelector('.element-content').style.display = 'block'
+            } else {
+                //Закрытие пунктов, по которым не было клика
+                elem.className = 'element'
+                elem.querySelector('.element-content').style.display = 'none'
             }
         })
 
