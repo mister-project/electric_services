@@ -7,6 +7,7 @@ import {
 import accordion from './modules/accordion'
 import validator from './modules/validator'
 import sendForm from './modules/sendForm'
+import scrollMenu from './modules/scrollMenu'
 
 
 slider();
@@ -16,3 +17,4 @@ buttonUp();
 validator();
 sendForm();
 modal();
+scrollMenu();
