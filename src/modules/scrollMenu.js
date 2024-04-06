@@ -1,7 +1,5 @@
 const scrollMenu = () => {
 
-    console.log('scrollMenu')
-
     // собираем все якоря; устанавливаем время анимации и количество кадров
     const topMenu = document.querySelector('.top-menu')
     const anchors = topMenu.querySelectorAll('a[href*="#"]')
@@ -16,7 +14,6 @@ const scrollMenu = () => {
             document.querySelector('' + blockID).scrollIntoView({
                 behavior: 'smooth',
                 block: "start"
-
             })
         })
     })
