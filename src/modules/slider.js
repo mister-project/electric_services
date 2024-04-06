@@ -4,10 +4,8 @@ const slider = () => {
 
     const slides = slider.querySelectorAll('.item')
 
-
     //Переменная для выбора соответствующего слайда
     let currentSlide = 0
-
 
     //Функция автоматического переключения слайдов
     const autoSlide = () => {
@@ -19,14 +17,13 @@ const slider = () => {
         }
 
         slides[currentSlide].style.display = "block";
+        slides[currentSlide].querySelector('.big').style.display = "block";
     }
-
 
     const startSlide = () => {
         setInterval(autoSlide, 3000)
 
     }
-
 
     startSlide()
 }

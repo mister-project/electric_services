@@ -9,10 +9,10 @@ import validator from './modules/validator'
 import sendForm from './modules/sendForm'
 
 
-modal();
 slider();
 carousel();
 accordion();
 buttonUp();
 validator();
 sendForm();
+modal();

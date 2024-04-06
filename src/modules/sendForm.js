@@ -13,16 +13,14 @@ const sendForm = () => {
     //Получаем подложку модального окна целиком (overlay)
     const overlay = document.querySelector('.modal-overlay')
     //Функция для валидации полей
-    const validate = (list) => {
-
+    const validate = () => {
         let success = true
-
         return success
     }
 
     const sendData = (data) => {
         return fetch('https://jsonplaceholder.typicode.com/posts', {
-                // jsonplaceholder. server.php
+                //отправка через файл server.php - jsonplaceholder. server.php
                 //phpmailer - плагин отправки
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -40,13 +38,7 @@ const sendForm = () => {
                 }, 5000);
 
             })
-
-
-
-
-
     }
-
 
     //функция (основная) обработки данных, организации и отслеживания отправки формы
     const submitForm = () => {
@@ -57,11 +49,10 @@ const sendForm = () => {
         //Получаем NodeList из полей ***для валидации***
         const formElements = form.querySelectorAll('.form-control');
 
-
         //Оповещения об отправке данных
         statusBlock.textContent = loadText
         form.append(statusBlock)
-
+        statusBlock.setAttribute("id", "sendStatus")
 
         //перебираем и формируем заново получившиеся поля из формы
         formData.forEach((val, key) => {
@@ -75,15 +66,13 @@ const sendForm = () => {
             sendData(formBody)
                 .then(data => {
 
-
                     // Вставка сообщения об успешной отправке
                     statusBlock.textContent = successText
 
-
                     formElements.forEach(input => {
 
-
                         input.value = '' //очищаем поля после отправки данных
+
                     })
 
                 })
@@ -109,7 +98,6 @@ const sendForm = () => {
         })
     } catch (error) {
 
-        // console.log(error.message)
     }
 }
 export default sendForm

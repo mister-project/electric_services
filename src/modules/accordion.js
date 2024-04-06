@@ -20,7 +20,6 @@ const accordion = () => {
                 elem.querySelector('.element-content').style.display = 'none'
             }
         })
-
     })
 
 }
