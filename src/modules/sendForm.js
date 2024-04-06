@@ -13,9 +13,16 @@ const sendForm = () => {
     //Получаем подложку модального окна целиком (overlay)
     const overlay = document.querySelector('.modal-overlay')
     //Функция для валидации полей
-    const validate = () => {
+    const validate = (list) => {
         let success = true
+        list.forEach(input => {
+            if (!input.classList.contains('success')) {
+                success = false
+            }
+            console.log(success)
+        })
         return success
+
     }
 
     const sendData = (data) => {
@@ -29,18 +36,33 @@ const sendForm = () => {
                 }
             })
             .then(res => res.json())
-            //Закрытие модального окна через 5 секунд после отправки
             .then(() => {
-
-                setTimeout(() => {
-                    modal.style.display = 'none'
-                    overlay.style.display = 'none'
-                }, 5000);
-
+                //запуск функции проверки статуса ответа от сервера и закрытие модального окна
+                getAnswer().then(() => {
+                    //Закрытие мод. окна через 5 секунд после удачной отправки
+                    setTimeout(() => {
+                        modal.style.display = 'none'
+                        overlay.style.display = 'none'
+                    }, 5000);
+                    //вывод ошибки (под формой), если статус ответа от сервера false
+                }).catch(error => {
+                    statusBlock.textContent = errorText
+                })
             })
     }
 
-    //функция (основная) обработки данных, организации и отслеживания отправки формы
+    //Запрос ответа от сервера, что он получил данные
+    const getAnswer = async () => {
+        let response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        //Очистка полей формы при подтверждении ответа от сервера
+        if (response.ok) {
+            const formElements1 = form.querySelectorAll('.form-control')
+            formElements1.forEach(input => {
+                input.value = '' //очищаем поля после отправки данных
+            })
+        }
+    }
+
     const submitForm = () => {
 
         //получаем сразу все поля из формы
@@ -64,16 +86,12 @@ const sendForm = () => {
         //отправка данных формы, если поля прошли валидацию
         if (validate(formElements)) {
             sendData(formBody)
+
+
                 .then(data => {
 
                     // Вставка сообщения об успешной отправке
                     statusBlock.textContent = successText
-
-                    formElements.forEach(input => {
-
-                        input.value = '' //очищаем поля после отправки данных
-
-                    })
 
                 })
                 .catch(error => {
