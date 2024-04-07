@@ -9,7 +9,6 @@ import validator from './modules/validator'
 import sendForm from './modules/sendForm'
 import scrollMenu from './modules/scrollMenu'
 
-
 slider();
 carousel();
 accordion();
