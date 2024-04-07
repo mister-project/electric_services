@@ -17,12 +17,12 @@ const modal = () => {
             sendStatus.textContent = ''
         }
     }
+
     //функция открытия модального окна
     const openModal = () => {
         modal.style.display = 'block'
         overlay.style.display = 'block'
         clearSendStatus()
-
     }
 
     //функция закрытия модального окна

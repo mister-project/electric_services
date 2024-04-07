@@ -1,8 +1,8 @@
 const scrollMenu = () => {
 
     // собираем все якоря; устанавливаем время анимации и количество кадров
-    const topMenu = document.querySelector('.top-menu')
-    const anchors = topMenu.querySelectorAll('a[href*="#"]')
+    const topMenu = document.querySelector('.top-menu');
+    const anchors = topMenu.querySelectorAll('a[href*="#"]');
 
     anchors.forEach(function (item) {
         // каждому якорю присваиваем обработчик события
@@ -10,7 +10,7 @@ const scrollMenu = () => {
 
             // убираем стандартное поведение
             e.preventDefault();
-            const blockID = item.getAttribute('href')
+            const blockID = item.getAttribute('href');
             document.querySelector('' + blockID).scrollIntoView({
                 behavior: 'smooth',
                 block: "start"
