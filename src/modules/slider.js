@@ -20,7 +20,7 @@ const slider = () => {
         return slickDots;
 
     };
-    //создание точек и присвоение классов
+    //создание точек как 'li' и присвоение классов
     const addDots = () => {
         const dotBlock = createDots();
         for (let i = 0; i < sliderItems.length; i++) {
