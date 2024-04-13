@@ -297,7 +297,7 @@ a.absolute {
 	color: #2fab6d;
 }
 .box {
-	display: bl;
+	display: none;
 }
 .box.visible {
 	display: block;
@@ -406,7 +406,7 @@ a.absolute {
 	background: #22282e;
 }
 .mobile-menu {
-	/* position: fixed; */
+	position: fixed;
 	top: 0;
 	right: -400px;
 	background: #21282e;
